@@ -171,7 +171,7 @@ class Cases:
 
 
 # if os.path.isdir(root+"/COVID-19"):
-# root="COVID-19"
+root="COVID-19"
 # repo=Repo(root)
 # git=repo.git
 # try:
