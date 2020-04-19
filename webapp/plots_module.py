@@ -141,7 +141,7 @@ class Plot:
 
 
 
-        print("plot init run!")
+        # print("plot init run!")
         Plot.title=""
         Plot.N=len(Plot.countries)
     
@@ -175,7 +175,7 @@ class Plot:
         # Plot.X=[smooth(gd.geo_x,Plot.smoothness)]
         # Plot.Y=[smooth(gd.geo_y,Plot.smoothness)]
         
-        print("survived!")
+        # print("survived!")
         # print(list(map(max, Plot.Y)))
         # print(list(map(max, Plot.X)))
         Plot.ylimit=max(map(max, Plot.Y))
@@ -296,6 +296,7 @@ class Plot:
         os.system("rm webapp/static/img/*")
         Plot.img_plot()
         plt.savefig("webapp/static/img/graph"+str(t)+Plot.image_ext,dpi=300)
+        print(os.system("ls webapp/static/img/"))
         return t
 
     def generate_anim(self):
