@@ -4,3 +4,6 @@ year validation
 Hit Counter
 Admin page
 search bar for countries
+seo
+meta tags
+analytics
