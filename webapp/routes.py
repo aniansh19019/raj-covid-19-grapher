@@ -98,6 +98,13 @@ def more_apps():
 	return render_template('more_apps.html', page='more_apps')
 
 
+@app.route('/hits')
+def hits():
+	return render_template('hits.html',page='hits')
+
+
+
+
 @app.errorhandler(404)
 def not_found_error(error):
 	# send_email("404 detected on site", "LOL", "<h1></h1>")
