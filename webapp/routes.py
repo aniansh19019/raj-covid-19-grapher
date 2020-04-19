@@ -6,6 +6,12 @@ import datetime as dt
 from webapp.plots_module import Plot as pt
 import os
 from webapp.email import send_email
+import urllib.request
+
+
+
+
+
 countries=list(Recovered.dict.keys());
 
 
@@ -13,6 +19,9 @@ countries=list(Recovered.dict.keys());
 @app.route('/index', methods=['GET', 'Post'])
 def index():
 	# print(os.getcwd())
+	# r = requests.get(url = 'https://hitcounter.pythonanywhere.com/count?url=raj-covid-19-grapher.herokuapp.com')
+	with urllib.request.urlopen('https://hitcounter.pythonanywhere.com/count?url=raj-covid-19-grapher.herokuapp.com') as response:
+		html = response.read()
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -100,7 +109,15 @@ def more_apps():
 
 @app.route('/hits')
 def hits():
-	return render_template('hits.html',page='hits')
+	# r = requests.get(url = 'https://hitcounter.pythonanywhere.com/nocount?url=raj-covid-19-grapher.herokuapp.com')
+	count=''
+	with urllib.request.urlopen('https://hitcounter.pythonanywhere.com/nocount?url=raj-covid-19-grapher.herokuapp.com') as response:
+		html = response.read()
+		count=str(html)
+		index=count.find("'")
+		index2=count.find("'", index+1)
+		count=count[index+1:index2]
+	return render_template('hits.html',page='hits', count=count)
 
 
 
