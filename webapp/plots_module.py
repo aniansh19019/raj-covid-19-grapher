@@ -296,7 +296,6 @@ class Plot:
         os.system("rm webapp/static/img/*")
         Plot.img_plot()
         plt.savefig("webapp/static/img/graph"+str(t)+Plot.image_ext,dpi=300)
-        print(os.system("ls webapp/static/img/"))
         return t
 
     def generate_anim(self):
