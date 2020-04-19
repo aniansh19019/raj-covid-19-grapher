@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block app_content %}
+	<center><h1>About</h1></center>
+	<br>
+	<div class="container">
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    
+
+                	<center>
+						<p class="lead">
+							<b>This is a web application created by <a href="https://www.instagram.com/aniansh/" target="_blank">Aniansh Raj Singh</a> for generating and exporting graphs and animations for the different data elements associated with the Covid-19 pandemic.</b>
+							<br>
+							<br>
+							The web app allows anyone to generate almost all possible graphs concerning the current Covid-19 Pandemic. I have tried to make the whole process as simple and self explanatory as possible. The user just selects the relevant options and then proceeds to view/download the generated graph/animation.
+							<br>
+							<br>
+							I will continue to tweak, debug and add more features to this application. If you find any bugs or inconsistencies in the website, I encourage you to kindly <a href="{{ url_for('contact') }}"><b>report</b></a> the bug.
+							<br>
+							<br>
+							If you have any suggestions or queries, feel free to <a href="{{ url_for('contact') }}"><b>contact me</b></a>.
+						</p>
+	
+						<br>
+						<br>
+						<br>
+						<h2>Credits and Sources</h2>
+						<br>
+						<p>
+							Thanks to <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">John Hopkins University</a> 	for making the data publicly available.
+							<br>
+							Mainly coded in  <a href="https://www.python.org/" target="_blank">Python</a>.
+							<br>
+							Plots created using <a href="https://matplotlib.org/" target="_blank"> Matplotlib</a>
+							<br>
+							Web interface created using <a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Flask</a>, <a href="https://wtforms.readthedocs.io/en/stable/" target="_blank">WT-forms</a> and <a href="	https://getbootstrap.com/" target="_blank">Bootstrap</a> including icons from <a href="	https://fontawesome.com/" target="_blank">Font Awesome</a>.
+							<br>
+	
+						</p>
+					</center>
+
+
+
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+	
+{% endblock %}

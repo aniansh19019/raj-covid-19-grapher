@@ -1,0 +1,50 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Covid-19</title>
+      {% else %}
+      <title>Welcome to Covid-19</title>
+      {% endif %}
+    </head>
+    <body>
+        <br>
+        <h1><center>Aniansh Raj Covid-19 Grapher</center></h1>
+        <br>
+        <hr>
+        <br>
+        <div>
+          <b>
+            <center>
+              <a href="{{ url_for('index') }}">Home</a>&emsp;
+              <a href="{{ url_for('animation') }}">Create Animation</a>&emsp;
+              <a href="{{ url_for('about') }}">About</a>&emsp;
+              <a href="{{ url_for('contact') }}">Contact</a>&emsp;
+              <a href="{{ url_for('more_apps') }}">More Apps</a>&emsp;
+            </center>
+          </b>   
+        </div>
+        <br>
+        <hr>
+        <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %} -->
+        <br>
+        {% block content %} {% endblock %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <!-- <b><a href="/index">Home</a></b> -->
+        <br>
+        <hr>
+    </body>
+</html>

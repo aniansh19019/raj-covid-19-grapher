@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block app_content %}
+	<center>
+		<div class="embed-responsive embed-responsive-16by9">
+			<video width=height=720 width=960 autoplay loop>
+				<source src="{{ url }}" type="video/mp4">
+			</video>
+		</div>
+		<br>
+		<a href="{{ url }}" download><button type="button" class="btn btn-primary">Download Animation</button></a>
+		<br>
+		<br>
+		<a href="{{ url_for('index') }}"><button type="button" class="btn btn-primary">New Animation</button></a>
+	</center>
+
+
+{% endblock %}

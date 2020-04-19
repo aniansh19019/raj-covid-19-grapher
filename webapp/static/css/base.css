@@ -1,0 +1,40 @@
+.footer
+{
+	background-color:#f8f8f8;
+	border-bottom: inset;
+    border-top: outset;
+    border-top-width: thin;
+    border-bottom-width: thin;
+}
+.smed
+{
+	font-size: 30px;
+}
+.insta
+{
+	color:#555555;
+}
+.fb
+{
+	color:#555555;
+}
+.mail
+{
+	color:#555555;
+}
+.contact
+{
+	font-size: 60px;
+}
+.insta_c
+{
+	color:#C13584;
+}
+.fb_c
+{
+	color:#3b5998;
+}
+.mail_c
+{
+	color:#0088cc;
+}

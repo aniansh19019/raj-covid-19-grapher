@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+    {% block app_content %}
+    <center>
+    	<br>
+        <h1>Contact</h1>
+        <br>
+        <h4>You can reach out and offer suggestions or submit queries using the form below:</h4>
+        <br>
+    </center>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                   {{ wtf.quick_form(form) }}
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+        <center>
+        	<br>
+        	<br>
+        	<h4>You can also contact me at:</h4>
+        	<br>
+        	<br>
+        	<div class="contact">
+        		<a href="https://www.instagram.com/aniansh/" target="_blank"><i class="fab fa-instagram-square insta_c"></i>	</a>
+        		&emsp;
+        		<a href="https://www.facebook.com/aniansh" target="_blank"><i class="fab fa-facebook-square fb_c"></i></a>
+        		&emsp;
+        		<a href="mailto:aniansh@yahoo.com" target="_blank"><i class="fas fa-envelope-square mail_C"></i></a>
+    		</div>
+    	</center>
+        <br>
+        <br>
+        <br>
+    {% endblock %}

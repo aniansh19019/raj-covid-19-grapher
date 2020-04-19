@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block app_content %}
+	<center>
+		<img src="{{ url }}" class="img-responsive">
+		<br>
+		<a href="{{ url }}" download><button type="button" class="btn btn-primary">Download Graph</button></a>
+		<br>
+		<br>
+		<a href="{{ url_for('index') }}"><button type="button" class="btn btn-primary">New Graph</button></a>
+	</center>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'bootstrap/base.html' %}
+
+<!-- {% block meta %}
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+{% endblock %}} -->
+
+{% block scripts %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="shortcut icon" href="static/res/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="static/res/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/c3c7f0ea77.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.3.js"></script> -->
+    <!-- <script src="js/bootstrap.js"></script> -->
+{% endblock %}
+{% block title %}
+    {% if title %}{{ title }} - Raj Covid-19 Grapher{% else %}Welcome to Raj Covid-19 Grapher{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <!-- <div class="container"> -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        Raj Covid-19 Grapher                    
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        {% if page == 'index' %}
+                            <li class="nav-item active"><a href="{{ url_for('index') }}">Graph</a></li>
+                        {% else %}
+                            <li class="nav-item"><a href="{{ url_for('index') }}">Graph</a></li>
+                        {% endif %}
+                        {% if page == 'animation' %}
+                            <li class="nav-item active"><a href="{{ url_for('animation') }}">Animations</a></li>
+                        {% else %}
+                            <li class="nav-item"><a href="{{ url_for('animation') }}">Animations</a></li>
+                        {% endif %}
+                        {% if page == 'about' %}
+                            <li class="nav-item active"><a href="{{ url_for('about') }}">About</a></li>
+                        {% else %}
+                            <li class="nav-item"><a href="{{ url_for('about') }}">About</a></li>
+                        {% endif %}
+                        {% if page == 'contact' %}
+                            <li class="nav-item active"><a href="{{ url_for('contact') }}">Contact</a></li>
+                        {% else %}
+                            <li class="nav-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+                        {% endif %}
+                        <!-- <li><a href="{{ url_for('animation') }}">Animaton</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                        <li><a href="{{ url_for('more_apps') }}">More Apps</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <!-- </div> -->
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+
+        {% block app_content %}{% endblock %}
+    </div>
+    <br>
+    <br>
+    <footer class="footer">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row text-center">
+            <div class="col-md-4 smed">
+                <!-- <br> -->
+                <a href="https://www.instagram.com/aniansh/" target="_blank"><i class="fab fa-instagram-square insta"></i></a>
+                &emsp;
+                <a href="https://www.facebook.com/aniansh" target="_blank"><i class="fab fa-facebook-square fb"></i></a>
+                &emsp;
+                <a href="mailto:aniansh@yahoo.com" target="_blank"><i class="fas fa-envelope-square mail"></i></a>
+                <!-- <br>  -->
+                <!-- <i class="fab fa-telegram telegram"></i> -->
+
+            </div>
+            <div class="col-md-4">
+                <h5><a href="{{ url_for('about') }}">Credits & Sources</a></h5>
+                <h5><a href="{{ url_for('contact') }}">Report a bug</a></h5>
+                <h5>Copyright© 2020 Aniansh Raj Singh</h>
+            </div>
+            <div class="col-md-4">
+                <a class="" href="{{ url_for('index') }}"><img src="static/res/brand_icon.png" height=64 width=64 alt="logo"></a>
+            </div>
+        </div>
+        <br>
+    </footer>
+
+{% endblock %}
