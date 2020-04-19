@@ -7,11 +7,18 @@ from flask_mail import Mail
 
 app = Flask(__name__)
 
-mail = Mail(app)
+
 bootstrap = Bootstrap(app)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config.from_object(Config)
+
+
+
+mail = Mail(app)
+
+
+
 from webapp import routes
 
 

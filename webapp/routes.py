@@ -74,6 +74,21 @@ def contact():
 		print(form.name.data)
 		print(form.email.data)
 		print(form.message.data)
+
+
+		#to form filler
+		send_email('Raj Covid-19 Grapher - Thank you for your feedback!',
+               sender=app.config['ADMINS'][0],
+               recipients=[form.email.data],
+               text_body=render_template('email/contact_auto_reply.txt', form=form),
+               html_body=render_template('email/contact_auto_reply.html', form=form))
+
+		#to admin
+		send_email('Raj Covid-19 Grapher Contact Form Filled - '+str(form.email.data),
+               sender=app.config['MAIL_USERNAME'],
+               recipients=app.config['ADMINS'],
+               text_body=render_template('email/contact_msg.txt', form=form),
+               html_body=render_template('email/contact_msg.html', form=form))
 		return render_template('sent.html', page='contact')
 	return render_template('contact.html', page='contact', form=form)
 

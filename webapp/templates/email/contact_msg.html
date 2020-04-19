@@ -1,0 +1,14 @@
+<h2>Raj Covid-19 Grapher Contact Form Filled</h2>
+
+
+<br>
+<p>
+	<br>
+	<b>Name:</b> {% if form.name.data %}{{form.name.data}}{% else %}N/A{% endif %}
+	<br>
+	<b>Email:</b> <a href="mailto:{{ form.email.data }}">{{ form.email.data }}</a>
+	<br>
+	<b>Message:</b> {{ form.message.data }}
+	<br>
+</p>
+<br>

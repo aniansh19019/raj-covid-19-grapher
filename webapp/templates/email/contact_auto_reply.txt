@@ -1,0 +1,8 @@
+Hey {% if form.name.data %}{{form.name.data}}{% else %}{% endif %}!
+
+Thank you for filling the contact form.
+I really appreciate your valuable feedback and I well get back to you at the earliest!
+
+Regards
+Aniansh Raj Singh
+(Creator, Raj Covid-19 Grapher)

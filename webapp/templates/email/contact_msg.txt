@@ -1,0 +1,5 @@
+Raj Covid-19 Grapher Contact Form Filled
+
+Name: {% if form.name.data %}{{form.name.data}}{% else %}N/A{% endif %}
+Email: {{ form.email.data }}
+Message: {{ form.message.data }}
