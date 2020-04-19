@@ -30,7 +30,7 @@ def index():
 		flash("Graph Generated.")
 		pt_obj=pt()
 		t=pt_obj.generate_plot()
-		url="webapp/static/img/graph"+str(t)+".png"
+		url="static/img/graph"+str(t)+".png"
 		return render_template('graph.html', url=url, page='index')
 	return render_template('index.html', title='Home', form=graph_form, page='index')
 
@@ -57,7 +57,7 @@ def animation():
 		flash("Animation Generated")
 		pt_obj=pt()
 		t=pt_obj.generate_anim()
-		url="webapp/static/vid/anim"+str(t)+".mp4"
+		url="static/vid/anim"+str(t)+".mp4"
 		return render_template('anim.html', url=url, page='animation')
 	return render_template('animation.html', title='Animation', form=graph_form, page='animation')
 
