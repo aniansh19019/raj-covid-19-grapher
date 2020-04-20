@@ -4,6 +4,7 @@ from flask import Flask
 from config import Config
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
+import redis
 
 app = Flask(__name__)
 
@@ -15,7 +16,14 @@ app.config.from_object(Config)
 
 
 
+
+
 mail = Mail(app)
+
+
+redis_obj=None
+if app.config['REDIS_URL']:
+    redis_obj=redis.from_url(app.config['REDIS_URL'])
 
 
 

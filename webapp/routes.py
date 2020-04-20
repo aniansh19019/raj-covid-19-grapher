@@ -7,24 +7,20 @@ from webapp.plots_module import Plot as pt
 import os
 from webapp.email import send_email
 import urllib.request
-
-
+from webapp.redis_thread import set_var, incr_var, get_var
 
 
 
 countries=list(Recovered.dict.keys());
+counter='counter'
+
 
 
 @app.route('/', methods=['GET', 'Post'])
 @app.route('/index', methods=['GET', 'Post'])
 def index():
-	# print(os.getcwd())
-	# r = requests.get(url = 'https://hitcounter.pythonanywhere.com/count?url=raj-covid-19-grapher.herokuapp.com')
-	# try:
-	# 	response=urllib.request.urlopen('https://hitcounter.pythonanywhere.com/count')
-	# 	html = response.read()
-	# except:
-	# 	print("Hit Server Error")
+
+	incr_var(counter)
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -112,17 +108,16 @@ def more_apps():
 
 @app.route('/hits')
 def hits():
-	# r = requests.get(url = 'https://hitcounter.pythonanywhere.com/nocount?url=raj-covid-19-grapher.herokuapp.com')
-	count="''"
-	# try:
-	# 	response=urllib.request.urlopen('https://hitcounter.pythonanywhere.com/nocount')
-	# 	html = response.read()
-	# 	count=str(html)
-	# 	index=count.find("'")
-	# 	index2=count.find("'", index+1)
-	# 	count=count[index+1:index2]
-	# except:
-	# 	print("Hit Server Error")
+	count=0
+
+	try:
+		count=str(get_var(counter))
+		i1=count.find("'")
+		i2=count.find("'", i1+1)
+		count=count[i1+1:i2]
+	except:
+		print("Counter redis server unreachable!")
+
 	return render_template('hits.html',page='hits', count=count)
 
 
