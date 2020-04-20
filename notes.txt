@@ -12,3 +12,10 @@ analytics
 //domain
 data logging gunicorn
 //favicon
+how to
+landing page
+description
+styling
+information page
+templates
+interpretation

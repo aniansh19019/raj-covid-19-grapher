@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from webapp import app
 from webapp.forms import GraphForm, AnimForm, MessageForm
 from webapp.covid19 import *
@@ -116,10 +116,19 @@ def contact():
 	return render_template('contact.html', page='contact', form=form)
 
 
-@app.route('/more_apps')
-def more_apps():
+@app.route('/test')
+def test():
 	poll_func()
-	return render_template('more_apps.html', page='more_apps')
+	print("Trying to fetch client info..")
+	ipv4_addr=request.environ['HTTP_X_FORWARDED_FOR']
+	# device_id=request.headers['X-ATT-DeviceId']
+	# device_name=request.headers['X-Wap-Profile']
+	# http_req1=request.headers['X-Request-ID']
+	# http_req2=request.headers['X-Correlation-ID']
+	# http_req=request.headers['X-Wap-Profile']
+	# http_req=request.headers['X-Wap-Profile']
+	print(ipv4_addr)
+	return render_template('test.html', page='test')
 
 
 @app.route('/hits')
