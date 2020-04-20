@@ -6,7 +6,7 @@ import datetime as dt
 from webapp.plots_module import Plot as pt
 import os
 from webapp.email import send_email
-import urllib.request
+# import urllib.request
 from webapp.redis_thread import set_var, incr_var, get_var
 # from urllib2 import Request, urlopen
 
@@ -125,29 +125,8 @@ def test():
 		print(ipv4_addr)
 	except:
 		pass
-	try:
-		device_id=request.headers['X-ATT-DeviceId']
-		print(device_id)
-	except:
-		pass
-	try:
-		device_name=request.headers['X-Wap-Profile']
-		print(device_name)
-	except:
-		pass
-	try:
-		http_req1=request.headers['X-Request-ID']
-		print(http_req1)
-	except:
-		pass
-	try:
-		http_req2=request.headers['X-Correlation-ID']
-		print(http_req2)
-	except:
-		pass
-	with urllib.request.urlopen('https://useragentidentifier.expeditedaddons.com/?api_key=' + os.environ['USERAGENTIDENTIFIER_API_KEY'] + '&user_agent=Mozilla') as response:
-   		html = response.read()
-   		print(html)
+	
+	print(dict(request.headers))
 	# http_req=request.headers['X-Wap-Profile']
 	# http_req=request.headers['X-Wap-Profile']
 	
