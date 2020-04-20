@@ -36,6 +36,7 @@ class Plot:
 
     
     data_keys=[('days', 'Days'), ('Confirmed.cases', 'No. of Confirmed Cases'), ('Confirmed.new_cases', 'New Confirmed Cases'), ('Confirmed.rate', 'Daily Growth Rate of Confirmed Cases'), ('Deaths.cases', 'No. of Deaths'), ('Deaths.new_cases', 'New deaths'), ('Deaths.rate', 'Daily Growth Rate of Deaths'), ('Recovered.cases', 'No. of Recoveries'), ('Recovered.new_cases', 'New Recoveries'), ('Recovered.rate', 'Daily Growth Rate of Recoveries'), ('closed_death_rate', 'Death Rate in Closed Cases'), ('death_rate', 'Death Rate for All Cases'), ('closed_recovered_rate', 'Recovery Rate in Closed Cases'), ('recovered_rate', 'Recovery Rate in all Cases')]
+    data_dict={'days':'Days', 'Confirmed.cases':'No. of Confirmed Cases', 'Confirmed.new_cases':'New Confirmed Cases', 'Confirmed.rate':'Daily Growth Rate of Confirmed Cases', 'Deaths.cases':'No. of Deaths', 'Deaths.new_cases':'New deaths', 'Deaths.rate':'Daily Growth Rate of Deaths', 'Recovered.cases':'No. of Recoveries', 'Recovered.new_cases':'New Recoveries', 'Recovered.rate':'Daily Growth Rate of Recoveries', 'closed_death_rate':'Death Rate in Closed Cases', 'death_rate':'Death Rate for All Cases', 'closed_recovered_rate':'Recovery Rate in Closed Cases', 'recovered_rate':'Recovery Rate in all Cases'}
     colors=["black", "darkgrey", "rosybrown","darkred", "red", "magenta", "orange", "gold", "olive", "lime", "palegreen", "green", "aqua", "blue", "teal", "darkblue", "blueviolet", "violet", "indigo"]*15#verify
     x_field=''
     y_field=''
@@ -80,6 +81,10 @@ class Plot:
 
 
     def set_data():#no days on y axis
+
+
+        Plot.x_label=Plot.data_dict[Plot.x_field]
+        Plot.y_label=Plot.data_dict[Plot.y_field]
         yfunc=None
         if Plot.y_field.find('.')!=-1:
             dot=Plot.y_field.index('.')
