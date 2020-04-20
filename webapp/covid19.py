@@ -5,7 +5,7 @@ import datetime as dt
 
 
 # Root directory for the COVID-19 Local repository
-root=os.getcwd()
+# root=os.getcwd()
 
 
 #Defining a case class
@@ -172,12 +172,12 @@ class Cases:
 
 # if os.path.isdir(root+"/COVID-19"):
 root="COVID-19"
-# repo=Repo(root)
-# git=repo.git
-# try:
-# 	git.pull()
-# except:
-# 	print("Network Error! Repository may be outdated!")
+repo=Repo(root)
+git=repo.git
+try:
+	git.pull()
+except:
+	print("Network Error! Repository may be outdated!")
 # else:
 # 	root+="/COVID-19"
 	# os.system("git clone https://github.com/CSSEGISandData/COVID-19.git")
