@@ -5,6 +5,7 @@ from config import Config
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 import redis
+import os
 
 app = Flask(__name__)
 
@@ -28,6 +29,9 @@ if app.config['REDIS_URL']:
 
 
 from webapp import routes
+
+
+
 
 
 

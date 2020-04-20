@@ -19,7 +19,7 @@ counter='counter'
 @app.route('/', methods=['GET', 'Post'])
 @app.route('/index', methods=['GET', 'Post'])
 def index():
-
+	
 	incr_var(counter)
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
@@ -106,9 +106,14 @@ def more_apps():
 	return render_template('more_apps.html', page='more_apps')
 
 
-@app.route('/hits')
-def hits():
+@app.route('/hits/<command>')
+def hits(command):
+
 	count=0
+	if command=='reset':
+		set_var(counter,0)
+	else:
+		return render_template('404.html'), 404
 
 	try:
 		count=str(get_var(counter))
@@ -119,8 +124,6 @@ def hits():
 		print("Counter redis server unreachable!")
 
 	return render_template('hits.html',page='hits', count=count)
-
-
 
 
 @app.errorhandler(404)

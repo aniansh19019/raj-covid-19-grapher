@@ -11,8 +11,10 @@ class Config(object):
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	ADMINS = ['aniansh@yahoo.com']
-	# REDIS_URL = os.environ.get("REDIS_URL")
-	REDIS_URL='redis://h:p25240e9fa48c1a3a2a3fa86a3071e100fb2c1a1053f05b08f0ee03aed02b5e88@ec2-18-207-83-208.compute-1.amazonaws.com:19439'
+
+	#redis
+	REDIS_URL = os.environ.get("REDIS_URL")
+	# REDIS_URL='redis://h:p25240e9fa48c1a3a2a3fa86a3071e100fb2c1a1053f05b08f0ee03aed02b5e88@ec2-18-207-83-208.compute-1.amazonaws.com:19439'
 	# MAIL_SERVER='smtp.googlemail.com'
 	# MAIL_PORT=587
 	# MAIL_USE_TLS=1
