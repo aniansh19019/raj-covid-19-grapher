@@ -106,15 +106,9 @@ def more_apps():
 	return render_template('more_apps.html', page='more_apps')
 
 
-@app.route('/hits/<command>')
-def hits(command):
-
-	count=0
-	if command=='reset':
-		set_var(counter,0)
-	else:
-		return render_template('404.html'), 404
-
+@app.route('/hits')
+def hits():
+	count=0	
 	try:
 		count=str(get_var(counter))
 		i1=count.find("'")
@@ -124,6 +118,13 @@ def hits(command):
 		print("Counter redis server unreachable!")
 
 	return render_template('hits.html',page='hits', count=count)
+
+@app.route('/reset_hits')
+def reset_hits():
+	set_var(counter,0)
+	count='Counter Reset!'
+	return render_template('hits.html',page='hits', count=count)
+
 
 
 @app.errorhandler(404)

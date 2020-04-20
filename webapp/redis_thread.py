@@ -11,7 +11,7 @@ def incr_async_var(app,var):
 def set_async_var(app,var,val):
 	with app.app_context():
 		try:
-			redis_obj.incr(var,val)
+			redis_obj.set(var,val)
 		except:
 			print("Counter redis server unreachable!")
 
