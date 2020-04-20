@@ -53,7 +53,8 @@ class Cases:
 		m=date_obj.strftime("%m")
 		if m[0]=="0":
 			m=m[1]
-		date=m+"/"+d+"/20"
+		y=date_obj.strftime("%y")
+		date=m+"/"+d+"/"+y
 		return date
 
 	def str_to_obj(self,date):

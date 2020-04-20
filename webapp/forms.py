@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 # from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms import *
 from wtforms.validators import *
+from wtforms_components import DateRange, If
 from webapp.covid19 import *
 import datetime as dt
 
@@ -44,11 +45,28 @@ last_date=Confirmed.str_to_obj(Confirmed.latest_date())
 
 
 
+def start_validate(form, field):
+	if form.start_date.data>form.end_date.data:
+		raise ValidationError('Start Date must be less than End Date!')
+
+def end_validate(form, field):
+	if form.start_date.data>form.end_date.data:
+		raise ValidationError('End Date must be greater than Start Date!')
 
 class GraphForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired(message='Please select one or more choices.')])
-	start_date = DateField('Start Date(dd-mm-yy)', format='%d-%m-%y', default=first_date, validators=[DataRequired()])#validators
-	end_date = DateField('End Date(dd-mm-yy)', format='%d-%m-%y', default=last_date, validators=[DataRequired()])
+	start_date = DateField('Start Date(dd-mm-yy)', 
+							format='%d-%m-%y', 
+							default=first_date, 
+							validators=[DataRequired(), 
+									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
+									start_validate])#validators
+	end_date = DateField('End Date(dd-mm-yy)', 
+							format='%d-%m-%y', 
+							default=last_date, 
+							validators=[DataRequired(), 
+							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
+							end_validate])
 	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
 	y_field = SelectField('Y Axis Data', choices=y_data_choices)
 	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')
@@ -60,10 +78,21 @@ class GraphForm(FlaskForm):
 	generate = SubmitField('Generate Graph')
 	# generate_anim= SubmitField('Generate Animation')
 
+
 class AnimForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired()])
-	start_date = DateField('Start Date(dd-mm-yy)', format='%d-%m-%y', default=first_date, validators=[DataRequired()])#validators
-	end_date = DateField('End Date(dd-mm-yy)', format='%d-%m-%y', default=last_date, validators=[DataRequired()])
+	start_date = DateField('Start Date(dd-mm-yy)', 
+							format='%d-%m-%y', 
+							default=first_date, 
+							validators=[DataRequired(), 
+									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
+									start_validate])#validators
+	end_date = DateField('End Date(dd-mm-yy)', 
+							format='%d-%m-%y', 
+							default=last_date, 
+							validators=[DataRequired(), 
+							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
+							end_validate])
 	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
 	y_field = SelectField('Y Axis Data', choices=y_data_choices)
 	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')

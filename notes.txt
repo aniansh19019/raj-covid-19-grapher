@@ -1,12 +1,14 @@
-Date range vlidation
-year validation
+//Date range vlidation
+//Date start and end validation
+//year validation
 //email contact form
 //Hit Counter
-Admin page
+//Admin page
 search bar for countries
 seo
 meta tags
 analytics
-tutorial creds
+//tutorial creds
 //domain
-dark mode
+data logging gunicorn
+//favicon

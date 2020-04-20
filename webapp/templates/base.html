@@ -4,10 +4,17 @@
     <meta name="viewport" content="width=device-width , initial-scale=1" />
 {% endblock %}} -->
 
+
+{% block head %}
+    {{ super() }}
+    
+    <link rel="shortcut icon" href="{{ url_for('static', filename='res/favicon.ico') }}">
+    
+{% endblock %}
 {% block scripts %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="shortcut icon" href="static/res/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="static/res/favicon.ico" type="image/x-icon">
+    
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
     <script src="https://kit.fontawesome.com/c3c7f0ea77.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
