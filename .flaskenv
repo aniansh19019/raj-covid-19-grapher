@@ -1,1 +1,2 @@
 FLASK_APP=grapher.py
+FLASK_DEBUG=1
