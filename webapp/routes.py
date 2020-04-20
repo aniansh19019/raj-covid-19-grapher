@@ -13,13 +13,20 @@ from webapp.redis_thread import set_var, incr_var, get_var
 
 countries=list(Recovered.dict.keys());
 counter='counter'
+res_url=''
+
+
+def poll_func():
+	if os.path.exists(res_url):
+		os.remove(res_url)
 
 
 
 @app.route('/', methods=['GET', 'Post'])
 @app.route('/index', methods=['GET', 'Post'])
 def index():
-	
+	global res_url
+	poll_func()
 	incr_var(counter)
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
@@ -39,6 +46,9 @@ def index():
 		pt_obj=pt()
 		t=pt_obj.generate_plot()
 		url="static/img/graph"+str(t)+".png"
+
+		res_url="webapp/"+url
+		# print(res_url)
 		return render_template('graph.html', url=url, page='index')
 	return render_template('index.html', title='Home', form=graph_form, page='index')
 
@@ -46,6 +56,8 @@ def index():
 
 @app.route('/animation', methods=['GET', 'POST'])
 def animation():
+	global res_url
+	poll_func()
 	graph_form = AnimForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -66,17 +78,20 @@ def animation():
 		pt_obj=pt()
 		t=pt_obj.generate_anim()
 		url="static/vid/anim"+str(t)+".mp4"
+		res_url="webapp/"+url
 		return render_template('anim.html', url=url, page='animation')
 	return render_template('animation.html', title='Animation', form=graph_form, page='animation')
 
 
 @app.route('/about')
 def about():
+	poll_func()
 	return render_template('about.html', page='about')
 
 
 @app.route('/contact', methods=['GET', 'Post'])
 def contact():
+	poll_func()
 	form=MessageForm()
 	if form.validate_on_submit():
 		print(form.name.data)
@@ -103,11 +118,13 @@ def contact():
 
 @app.route('/more_apps')
 def more_apps():
+	poll_func()
 	return render_template('more_apps.html', page='more_apps')
 
 
 @app.route('/hits')
 def hits():
+	poll_func()
 	count=0	
 	try:
 		count=str(get_var(counter))
@@ -121,6 +138,7 @@ def hits():
 
 @app.route('/reset_hits')
 def reset_hits():
+	poll_func()
 	set_var(counter,0)
 	count='Counter Reset!'
 	return render_template('hits.html',page='hits', count=count)
@@ -129,9 +147,11 @@ def reset_hits():
 
 @app.errorhandler(404)
 def not_found_error(error):
+	poll_func()
 	# send_email("404 detected on site", "LOL", "<h1></h1>")
-    return render_template('404.html'), 404
+	return render_template('404.html'), 404
 
 @app.errorhandler(500)
 def internal_error(error):
-    return render_template('500.html'), 500
+	poll_func()
+	return render_template('500.html'), 500

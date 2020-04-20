@@ -298,14 +298,14 @@ class Plot:
     
     def generate_plot(self):
         t=time.time()
-        os.system("rm webapp/static/img/*")
+        # os.system("rm webapp/static/img/*")
         Plot.img_plot()
         plt.savefig("webapp/static/img/graph"+str(t)+Plot.image_ext,dpi=300)
         return t
 
     def generate_anim(self):
         t=time.time()
-        os.system("rm webapp/static/vid/*")
+        # os.system("rm webapp/static/vid/*")
         anim = animation.FuncAnimation(Plot.fig, Plot.animate, init_func=Plot.init, frames=len(Plot.Y[0]), interval=1, blit=True) 
         anim.save("webapp/static/vid/anim"+str(t)+".mp4", writer = 'ffmpeg', fps = Plot.frame_rate, dpi=200)
         return t
