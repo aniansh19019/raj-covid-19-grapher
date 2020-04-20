@@ -120,18 +120,38 @@ def contact():
 def test():
 	poll_func()
 	print("Trying to fetch client info..")
-	ipv4_addr=request.environ['HTTP_X_FORWARDED_FOR']
-	device_id=request.environ['X-ATT-DeviceId']
-	device_name=request.environ['X-Wap-Profile']
-	http_req1=request.environ['X-Request-ID']
-	http_req2=request.environ['X-Correlation-ID']
+	try:
+		ipv4_addr=request.environ['HTTP_X_FORWARDED_FOR']
+		print(ipv4_addr)
+	except:
+		pass
+	try:
+		device_id=request.environ['X-ATT-DeviceId']
+		print(device_id)
+	except:
+		pass
+	try:
+		device_name=request.environ['X-Wap-Profile']
+		print(device_name)
+	except:
+		pass
+	try:
+		http_req1=request.environ['X-Request-ID']
+		print(http_req1)
+	except:
+		pass
+	try:
+		http_req2=request.environ['X-Correlation-ID']
+		print(http_req2)
+	except:
+		pass
 	# http_req=request.headers['X-Wap-Profile']
 	# http_req=request.headers['X-Wap-Profile']
-	print(ipv4_addr)
-	print(device_id)
-	print(device_name)
-	print(http_req1)
-	print(http_req2)
+	
+	
+	
+	
+	
 	return render_template('test.html', page='test')
 
 
