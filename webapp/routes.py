@@ -8,7 +8,7 @@ import os
 from webapp.email import send_email
 import urllib.request
 from webapp.redis_thread import set_var, incr_var, get_var
-
+# from urllib2 import Request, urlopen
 
 
 countries=list(Recovered.dict.keys());
@@ -121,7 +121,7 @@ def test():
 	poll_func()
 	print("Trying to fetch client info..")
 	try:
-		ipv4_addr=request.headers['HTTP_X_FORWARDED_FOR']
+		ipv4_addr=request.environ['HTTP_X_FORWARDED_FOR']
 		print(ipv4_addr)
 	except:
 		pass
@@ -145,6 +145,9 @@ def test():
 		print(http_req2)
 	except:
 		pass
+	with urllib.request.urlopen('https://useragentidentifier.expeditedaddons.com/?api_key=' + os.environ['USERAGENTIDENTIFIER_API_KEY'] + '&user_agent=Mozilla') as response:
+   		html = response.read()
+   		print(html)
 	# http_req=request.headers['X-Wap-Profile']
 	# http_req=request.headers['X-Wap-Profile']
 	
