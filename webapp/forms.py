@@ -1,22 +1,16 @@
 from flask_wtf import FlaskForm
-# from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms import *
+from wtforms import StringField, SelectField, BooleanField, SubmitField, SelectMultipleField, FloatField, IntegerField, TextAreaField
+# from wtforms import *
 from wtforms.validators import *
 from wtforms_components import DateRange, If
+from wtforms.fields.html5 import DateField
+
 from webapp.covid19 import *
 import datetime as dt
 
 from webapp.plots_module import Plot as pt
 
 
-
-
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
 
 
 
@@ -55,14 +49,15 @@ def end_validate(form, field):
 
 class GraphForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired(message='Please select one or more choices.')])
-	start_date = DateField('Start Date(dd-mm-yy)', 
-							format='%d-%m-%y', 
+	start_date = DateField('Start Date(dd-mm-yyyy)', 
+							format='%Y-%m-%d', 
 							default=first_date, 
 							validators=[DataRequired(), 
 									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 									start_validate])#validators
-	end_date = DateField('End Date(dd-mm-yy)', 
-							format='%d-%m-%y', 
+
+	end_date = DateField('End Date(dd-mm-yyyy)', 
+							format='%Y-%m-%d', 
 							default=last_date, 
 							validators=[DataRequired(), 
 							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
@@ -81,14 +76,15 @@ class GraphForm(FlaskForm):
 
 class AnimForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired()])
-	start_date = DateField('Start Date(dd-mm-yy)', 
-							format='%d-%m-%y', 
+	start_date = DateField('Start Date(dd-mm-yyyy)', 
+							format='%Y-%m-%d', 
 							default=first_date, 
 							validators=[DataRequired(), 
 									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 									start_validate])#validators
-	end_date = DateField('End Date(dd-mm-yy)', 
-							format='%d-%m-%y', 
+
+	end_date = DateField('End Date(dd-mm-yyyy)', 
+							format='%Y-%m-%d', 
 							default=last_date, 
 							validators=[DataRequired(), 
 							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),

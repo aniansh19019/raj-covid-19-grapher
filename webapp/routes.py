@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for
 from webapp import app
-from webapp.forms import LoginForm, GraphForm, AnimForm, MessageForm
+from webapp.forms import GraphForm, AnimForm, MessageForm
 from webapp.covid19 import *
 import datetime as dt
 from webapp.plots_module import Plot as pt
