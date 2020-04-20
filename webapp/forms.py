@@ -28,6 +28,8 @@ for key in keys:
 	sub=(key,key)
 	country_choices.append(sub)
 
+default_countries=['US', 'Italy', 'Spain', 'France', 'United Kingdom', 'Korea, South', 'Japan', 'India', 'Pakistan', 'Iran']
+
 scale_choices=[("linear","Linear"), ("log", "Logarithmic")]
 x_data_choices=pt.data_keys.copy()
 y_data_choices=pt.data_keys.copy()
