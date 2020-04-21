@@ -8,7 +8,7 @@
 counry validation
 seo
 meta tags
-analytics
+//analytics
 //tutorial creds
 //domain
 data logging gunicorn
