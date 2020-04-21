@@ -19,3 +19,5 @@ styling
 information page
 templates
 interpretation
+logging usin google sheets
+google analytics

@@ -119,13 +119,6 @@ def contact():
 @app.route('/test')
 def test():
 	poll_func()
-	print("Trying to fetch client info..")
-	try:
-		ipv4_addr=request.environ['HTTP_X_FORWARDED_FOR']
-		print(ipv4_addr)
-	except:
-		pass
-	
 	print(dict(request.headers))
 	# http_req=request.headers['X-Wap-Profile']
 	# http_req=request.headers['X-Wap-Profile']
