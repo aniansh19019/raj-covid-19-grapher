@@ -306,8 +306,8 @@ class Plot:
     def generate_anim(self):
         t=time.time()
         # os.system("rm webapp/static/vid/*")
-        anim = animation.FuncAnimation(Plot.fig, Plot.animate, init_func=Plot.init, frames=len(Plot.Y[0]), interval=1, blit=True) 
-        anim.save("webapp/static/vid/anim"+str(t)+".mp4", writer = 'ffmpeg', fps = Plot.frame_rate, dpi=200)
+        anim = animation.FuncAnimation(Plot.fig, Plot.animate, init_func=Plot.init, frames=len(Plot.Y[0]), blit=True) 
+        anim.save("webapp/static/vid/anim"+str(t)+".mp4", writer = 'ffmpeg', fps = Plot.frame_rate, dpi=100)
         return t
 
 
