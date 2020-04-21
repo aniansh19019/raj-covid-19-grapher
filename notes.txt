@@ -37,3 +37,4 @@ fill locale default
 
 animation speed
 
+redis file removal
