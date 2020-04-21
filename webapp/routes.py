@@ -42,13 +42,12 @@ def index():
 		pt.leg=graph_form.legends.data
 		pt.smoothness=graph_form.averaging.data
 
-		flash("Graph Generated.")
+		
 		pt_obj=pt()
 		t=pt_obj.generate_plot()
 		url="static/img/graph"+str(t)+".png"
-
 		res_url="webapp/"+url
-		# print(res_url)
+		flash("Graph Generated.")
 		return render_template('graph.html', url=url, page='index')
 	return render_template('index.html', title='Home', form=graph_form, page='index')
 
@@ -74,11 +73,12 @@ def animation():
 		pt.smoothness=graph_form.averaging.data
 		pt.fps=graph_form.fps.data
 
-		flash("Animation Generated")
+		
 		pt_obj=pt()
 		t=pt_obj.generate_anim()
 		url="static/vid/anim"+str(t)+".mp4"
 		res_url="webapp/"+url
+		flash("Animation Generated")
 		return render_template('anim.html', url=url, page='animation')
 	return render_template('animation.html', title='Animation', form=graph_form, page='animation')
 

@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
+
+
+{% block head %}
+	{{ super() }}
+
+	<script type="text/javascript">
+	$('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'<script>});
+	</script>
+{% endblock %}
 {% block app_content %}
 
 
-	
+	<div class="input-group date" data-provide="datepicker">
+    <input type="text" class="form-control">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
 	<center><h1>Testing Area</h1></center>
 	<p>
 		<select>
