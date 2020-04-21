@@ -1,4 +1,2 @@
 .DS_Store
 __pycache__/
-/webapp/static/img/*
-/webapp/static/vid/*
