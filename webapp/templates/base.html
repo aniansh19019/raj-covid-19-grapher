@@ -33,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-
+    {% if render_id=='desktop' %}
     <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/tail.select-light-feather.css') }}">
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/tail.select.min.js') }}"></script>
@@ -43,9 +43,59 @@
 
     <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function(){
-                tail.select("#multi", { searchMinLength:1,animate:true, placeholder:"Select one or more countries from the list." ,classNames:"set_width", search:true, multiSelectAll: false, multiPinSelected: false /* Your Options */ });
+                tail.select("#multi", {
+    animate: false,              // [0.3.0]      Boolean
+    classNames: "set_width",           // [0.2.0]      Boolean, String, Array, null
+    csvOutput: false,           // [0.3.4]      Boolean
+    csvSeparator: ",",          // [0.3.4]      String
+    descriptions: false,        // [0.3.0]      Boolean
+    deselect: false,            // [0.3.0]      Boolean
+    disabled: false,            // [0.5.0]      Boolean
+    height: 350,                // [0.2.0]      Integer, null
+    hideDisabled: false,        // [0.3.0]      Boolean
+    hideSelected: false,        // [0.3.0]      Boolean
+    items: {},                  // [0.3.0]      Object
+    locale: "en",               // [0.5.0]      String
+    linguisticRules: {          // [0.5.9]      Object
+        "е": "ё",
+        "a": "ä",
+        "o": "ö",
+        "u": "ü",
+        "ss": "ß"
+    },
+    multiple: true,            // [0.2.0]      Boolean
+    multiLimit: Infinity,       // [0.3.0]      Integer, Infinity
+    multiPinSelected: false,    // [0.5.0]      Boolean
+    multiContainer: false,      // [0.3.0]      Boolean, String
+    multiShowCount: true,       // [0.3.0]      Boolean
+    multiShowLimit: false,      // [0.5.0]      Boolean
+    multiSelectAll: false,      // [0.4.0]      Boolean
+    multiSelectGroup: true,     // [0.4.0]      Boolean
+    openAbove: null,            // [0.3.0]      Boolean, null
+    placeholder: "Please select one or more countries.",          // [0.2.0]      String, null
+    search: true,              // [0.3.0]      Boolean
+    searchConfig: [             // [0.5.13]     Array
+        "text", "value"
+    ],
+    searchDisabled: false,       // [0.5.5]      Boolean
+    searchFocus: false,          // [0.3.0]      Boolean
+    searchMarked: false,         // [0.3.0]      Boolean
+    searchMinLength: 1,         // [0.5.13]     Integer
+    sortItems: false,           // [0.3.0]      String, Function, false
+    sortGroups: false,          // [0.3.0]      String, Function, false
+    sourceBind: false,          // [0.5.0]      Boolean
+    sourceHide: true,           // [0.5.0]      Boolean
+    startOpen: false,           // [0.3.0]      Boolean
+    stayOpen: false,            // [0.3.0]      Boolean
+    width: null,                // [0.2.0]      Integer, String, null
+    cbComplete: undefined,      // [0.5.0]      Function
+    cbEmpty: undefined,         // [0.5.0]      Function
+    cbLoopItem: undefined,      // [0.4.0]      Function
+    cbLoopGroup: undefined      // [0.4.0]      Function
+});
             });
     </script>
+    {% endif %}
     <!-- <script src="https://code.jquery.com/jquery-2.1.3.js"></script> -->
    
 {% endblock %}

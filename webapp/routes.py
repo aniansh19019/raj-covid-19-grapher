@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from webapp import app
 from webapp.forms import GraphForm, AnimForm, MessageForm
+# import webapp.forms as forms_module
 from webapp.covid19 import *
 import datetime as dt
 from webapp.plots_module import Plot as pt
@@ -14,9 +15,48 @@ from webapp.redis_thread import set_var, incr_var, get_var
 countries=list(Recovered.dict.keys());
 counter='counter'
 res_url=''
-
-
+http_headers=None
+render_id='desktop'
 def poll_func():
+	global http_headers
+	global render_id
+	user_device='default'
+
+
+	try:
+		http_headers=dict(request.headers)
+		try:
+			user_agent=str(http_headers['User-Agent'])
+			# print(user_agent)
+			if 'iPhone' in user_agent:
+				user_device='ios'
+			elif 'Android' in user_agent:
+				user_device='android'
+			elif 'Macintosh' in user_agent:
+				user_device='mac'
+			elif 'Windows' in user_agent:
+				user_device='windows'
+			elif 'Ubuntu' in user_agent:
+				user_device='linux'
+			else:
+				user_device='default'
+			print(user_device)
+		except:
+			print("Couldn't obtain user agent!")
+			user_device='default'
+	except:
+		print("Couldn't obtain headers!")
+
+	
+		
+
+	if user_device=='ios' or user_device=='android':
+		render_id='mobile'
+	else:
+		render_id='desktop'
+
+
+
 	if os.path.exists(res_url):
 		os.remove(res_url)
 
@@ -26,8 +66,17 @@ def poll_func():
 @app.route('/index', methods=['GET', 'Post'])
 def index():
 	global res_url
+
+
 	poll_func()
+
+
 	incr_var(counter)
+
+
+	print(render_id)
+
+
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -49,7 +98,7 @@ def index():
 		res_url="webapp/"+url
 		flash("Graph Generated.")
 		return render_template('graph.html', url=url, page='index')
-	return render_template('index.html', title='Home', form=graph_form, page='index')
+	return render_template('index.html', title='Home', form=graph_form, page='index', render_id=render_id)
 
 
 
@@ -80,7 +129,7 @@ def animation():
 		res_url="webapp/"+url
 		flash("Animation Generated")
 		return render_template('anim.html', url=url, page='animation')
-	return render_template('animation.html', title='Animation', form=graph_form, page='animation')
+	return render_template('animation.html', title='Animation', form=graph_form, page='animation', render_id=render_id)
 
 
 @app.route('/about')
