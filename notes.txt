@@ -24,3 +24,11 @@ logging usin google sheets
 google analytics
 default countries
 world data support
+
+graph styling
+
+groups in list of countries
+
+legends auto disable
+
+descriptive options
