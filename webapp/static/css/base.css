@@ -42,3 +42,7 @@
 {
 	visibility: hidden;
 }
+.set_width
+{
+	width: -webkit-fill-available;
+}

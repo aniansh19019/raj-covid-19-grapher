@@ -4,7 +4,8 @@
 //email contact form
 //Hit Counter
 //Admin page
-search bar for countries
+//search bar for countries
+counry validation
 seo
 meta tags
 analytics
@@ -21,3 +22,5 @@ templates
 interpretation
 logging usin google sheets
 google analytics
+default countries
+world data support

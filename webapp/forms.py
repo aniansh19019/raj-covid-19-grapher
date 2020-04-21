@@ -48,7 +48,7 @@ def end_validate(form, field):
 		raise ValidationError('End Date must be greater than Start Date!')
 
 class GraphForm(FlaskForm):
-	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired(message='Please select one or more choices.')])
+	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired(message='Please select one or more choices.')])
 	start_date = DateField('Start Date(dd-mm-yyyy)', 
 							format='%Y-%m-%d', 
 							default=first_date, 
@@ -75,7 +75,7 @@ class GraphForm(FlaskForm):
 
 
 class AnimForm(FlaskForm):
-	countries = SelectMultipleField('Select Countries', choices=country_choices, validators=[DataRequired()])
+	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired()])
 	start_date = DateField('Start Date(dd-mm-yyyy)', 
 							format='%Y-%m-%d', 
 							default=first_date, 
