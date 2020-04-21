@@ -32,3 +32,8 @@ groups in list of countries
 legends auto disable
 
 descriptive options
+
+fill locale default
+
+animation speed
+
