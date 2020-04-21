@@ -1,2 +1,5 @@
 .DS_Store
 __pycache__/
+__init__.pyc
+/webapp/static/img/**
+/webapp/static/vid/**
