@@ -40,7 +40,7 @@ def poll_func():
 				user_device='linux'
 			else:
 				user_device='default'
-			print(user_device)
+			# print(user_device)
 		except:
 			print("Couldn't obtain user agent!")
 			user_device='default'
@@ -72,9 +72,6 @@ def index():
 
 
 	incr_var(counter)
-
-
-	print(render_id)
 
 
 	graph_form = GraphForm()

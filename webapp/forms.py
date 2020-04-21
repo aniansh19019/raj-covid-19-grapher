@@ -13,14 +13,47 @@ from webapp.plots_module import Plot as pt
 
 
 
+first_date=Confirmed.str_to_obj(Confirmed.fields[5])
+last_date=Confirmed.str_to_obj(Confirmed.latest_date())
+
+first_str=Confirmed.fields[5]
+last_str=Confirmed.latest_date()
+
+
+custom_country_labels={'US':'United States', 'Korea, South':'South Korea'}
+
+alphabetical=list(Confirmed.dict.keys());
+sorts=list(Confirmed.dict.keys());
+
+
+for i in range(len(sorts)-1):
+	for j in range(len(sorts)-i-1):
+		if(Confirmed.cases(sorts[j],last_str)<Confirmed.cases(sorts[j+1],last_str)):
+			temp=sorts[j]
+			sorts[j]=sorts[j+1]
+			sorts[j+1]=temp
+
+keys=[]
+
+top_n=20
+
+
+for i in range(top_n):
+	keys.append(sorts[i])
+	alphabetical.remove(sorts[i])
+
+for key in alphabetical:
+	keys.append(key)
 
 
 
 
-keys=list(Confirmed.dict.keys());
 country_choices=[]
 for key in keys:
-	sub=(key,key)
+	if key in custom_country_labels.keys():
+		sub=(key,custom_country_labels[key])
+	else:
+		sub=(key,key)
 	country_choices.append(sub)
 
 default_countries=['US', 'Italy', 'Spain', 'France', 'United Kingdom', 'Korea, South', 'Japan', 'India', 'Pakistan', 'Iran']
@@ -33,8 +66,7 @@ y_data_choices.pop(0)
 
 
 
-first_date=Confirmed.str_to_obj(Confirmed.fields[5])
-last_date=Confirmed.str_to_obj(Confirmed.latest_date())
+
 
 
 

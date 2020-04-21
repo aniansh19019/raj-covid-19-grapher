@@ -46,3 +46,8 @@
 {
 	width: -webkit-fill-available;
 }
+.beta-subscript
+{
+	color:maroon;
+	font-size: 50%;
+}
