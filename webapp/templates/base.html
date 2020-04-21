@@ -20,9 +20,9 @@
     </script>
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='res/favicon.ico') }}">
-    <link rel="stylesheet" type= "text/css" href="https://cdn.jsdelivr.net/npm/tail.select@latest/css/tail.select-default.css">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/tail.select-light-feather.css') }}">
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tail.select@latest/js/tail.select.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/tail.select.min.js') }}"></script>
 
 
     
@@ -40,7 +40,7 @@
     
     <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function(){
-                tail.select("#multi", { animate:true, placeholder:"Select one or more countries from the list." ,classNames:"set_width", search:true, multiSelectAll: false, multiPinSelected: false /* Your Options */ });
+                tail.select("#multi", { searchMinLength:3,animate:true, placeholder:"Select one or more countries from the list." ,classNames:"set_width", search:true, multiSelectAll: false, multiPinSelected: false /* Your Options */ });
             });
     </script>
     <!-- <script src="https://code.jquery.com/jquery-2.1.3.js"></script> -->
