@@ -71,6 +71,11 @@ def anim_num_validate(form,field):
 	if len(form.countries.data)>5:
 		raise ValidationError('Please select no more than 5 items!')
 
+def custom_data_required_validate(form,field):
+	print(field.data)
+	if field.data==[]:
+		raise ValidationError('Please select one or more countries!')
+
 
 
 def start_validate(form, field):
@@ -82,7 +87,7 @@ def end_validate(form, field):
 		raise ValidationError('End Date must be greater than Start Date!')
 
 class GraphForm(FlaskForm):
-	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired(message='Please select one or more choices.')])
+	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[custom_data_required_validate])
 	start_date = DateField('Start Date(dd/mm/yyyy)', 
 							format='%Y-%m-%d', 
 							default=first_date,
@@ -109,7 +114,7 @@ class GraphForm(FlaskForm):
 
 
 class AnimForm(FlaskForm):
-	countries = SelectMultipleField('Select Countries(Maximum 5)', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired(), anim_num_validate])
+	countries = SelectMultipleField('Select Countries(Maximum 5)', render_kw={"id":"multi"}, choices=country_choices, validators=[custom_data_required_validate, anim_num_validate])
 	start_date = DateField('Start Date(dd/mm/yyyy)', 
 							format='%Y-%m-%d', 
 							default=first_date, 
