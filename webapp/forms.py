@@ -67,7 +67,9 @@ y_data_choices.pop(0)
 
 
 
-
+def anim_num_validate(form,field):
+	if len(form.countries.data)>5:
+		raise ValidationError('Please select no more than 5 items!')
 
 
 
@@ -107,7 +109,7 @@ class GraphForm(FlaskForm):
 
 
 class AnimForm(FlaskForm):
-	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired()])
+	countries = SelectMultipleField('Select Countries(Maximum 5)', render_kw={"id":"multi"}, choices=country_choices, validators=[DataRequired(), anim_num_validate])
 	start_date = DateField('Start Date(dd/mm/yyyy)', 
 							format='%Y-%m-%d', 
 							default=first_date, 

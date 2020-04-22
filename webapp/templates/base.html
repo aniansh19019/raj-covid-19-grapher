@@ -20,6 +20,9 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='res/favicon.ico') }}">
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% if render_id=='iphone' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/date-width-fix.css') }}">
+    {% endif %}
 
     
 {% endblock %}

@@ -27,9 +27,11 @@ def poll_func():
 		http_headers=dict(request.headers)
 		try:
 			user_agent=str(http_headers['User-Agent'])
-			# print(user_agent)
-			if 'iPhone' in user_agent:
-				user_device='ios'
+			print(user_agent)
+			if 'iPad' in user_agent:
+				user_device='ipad'
+			elif 'iPhone' in user_agent:
+				user_device='iphone'
 			elif 'Android' in user_agent:
 				user_device='android'
 			elif 'Macintosh' in user_agent:
@@ -40,7 +42,7 @@ def poll_func():
 				user_device='linux'
 			else:
 				user_device='default'
-			# print(user_device)
+			print(user_device)
 		except:
 			print("Couldn't obtain user agent!")
 			user_device='default'
@@ -49,9 +51,11 @@ def poll_func():
 
 	
 		
-
-	if user_device=='ios' or user_device=='android':
-		render_id='mobile'
+		# print(user_device)
+	if user_device=='iphone':
+		render_id='iphone'
+	elif user_device=='android':
+		render_id='android'
 	else:
 		render_id='desktop'
 
