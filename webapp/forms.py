@@ -88,14 +88,14 @@ def end_validate(form, field):
 
 class GraphForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries', render_kw={"id":"multi"}, choices=country_choices, validators=[custom_data_required_validate])
-	start_date = DateField('Start Date(dd/mm/yyyy)', 
+	start_date = DateField('Start Date', 
 							format='%Y-%m-%d', 
 							default=first_date,
 							validators=[DataRequired(), 
 									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 									start_validate])#validators
 
-	end_date = DateField('End Date(dd/mm/yyyy)', 
+	end_date = DateField('End Date', 
 							format='%Y-%m-%d', 
 							default=last_date, 
 							validators=[DataRequired(), 
@@ -115,14 +115,14 @@ class GraphForm(FlaskForm):
 
 class AnimForm(FlaskForm):
 	countries = SelectMultipleField('Select Countries(Maximum 5)', render_kw={"id":"multi"}, choices=country_choices, validators=[custom_data_required_validate, anim_num_validate])
-	start_date = DateField('Start Date(dd/mm/yyyy)', 
+	start_date = DateField('Start Date', 
 							format='%Y-%m-%d', 
 							default=first_date, 
 							validators=[DataRequired(), 
 									DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 									start_validate])#validators
 
-	end_date = DateField('End Date(dd/mm/yyyy)', 
+	end_date = DateField('End Date', 
 							format='%Y-%m-%d', 
 							default=last_date, 
 							validators=[DataRequired(), 
