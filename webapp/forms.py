@@ -35,7 +35,7 @@ for i in range(len(sorts)-1):
 
 keys=[]
 
-top_n=20
+top_n=15
 
 
 for i in range(top_n):
