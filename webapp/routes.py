@@ -100,7 +100,7 @@ def index():
 		flash("Graph Generated.")
 		return render_template('graph.html', url=url, page='index')
 	incr_var(counter)
-	return render_template('index.html', title='Graphs - Generate high quality graph', form=graph_form, page='index', render_id=render_id)
+	return render_template('index.html', title='Graphs - Generate High Quality Graph', form=graph_form, page='index', render_id=render_id)
 
 
 
@@ -131,13 +131,13 @@ def animation():
 		res_url="webapp/"+url
 		flash("Animation Generated")
 		return render_template('anim.html', url=url, page='animation')
-	return render_template('animation.html', title='Animations - Make high quality animated graphs', form=graph_form, page='animation', render_id=render_id)
+	return render_template('animation.html', title='Animations - Make High Quality Animated Graphs', form=graph_form, page='animation', render_id=render_id)
 
 
 @app.route('/about')
 def about():
 	poll_func()
-	return render_template('about.html', title='About - About the app, Credits & Sources', page='about')
+	return render_template('about.html', title='About - About the App, Credits & Sources', page='about')
 
 
 @app.route('/contact', methods=['GET', 'Post'])
