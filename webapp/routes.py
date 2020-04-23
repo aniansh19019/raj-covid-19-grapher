@@ -75,7 +75,7 @@ def index():
 	poll_func()
 
 
-	incr_var(counter)
+	
 
 
 	graph_form = GraphForm()
@@ -99,7 +99,8 @@ def index():
 		res_url="webapp/"+url
 		flash("Graph Generated.")
 		return render_template('graph.html', url=url, page='index')
-	return render_template('index.html', title='Home', form=graph_form, page='index', render_id=render_id)
+	incr_var(counter)
+	return render_template('index.html', title='Graphs - Generate high quality graph', form=graph_form, page='index', render_id=render_id)
 
 
 
@@ -130,13 +131,13 @@ def animation():
 		res_url="webapp/"+url
 		flash("Animation Generated")
 		return render_template('anim.html', url=url, page='animation')
-	return render_template('animation.html', title='Animation', form=graph_form, page='animation', render_id=render_id)
+	return render_template('animation.html', title='Animations - Make high quality animated graphs', form=graph_form, page='animation', render_id=render_id)
 
 
 @app.route('/about')
 def about():
 	poll_func()
-	return render_template('about.html', page='about')
+	return render_template('about.html', title='About - About the app, Credits & Sources', page='about')
 
 
 @app.route('/contact', methods=['GET', 'Post'])
@@ -163,7 +164,7 @@ def contact():
                text_body=render_template('email/contact_msg.txt', form=form),
                html_body=render_template('email/contact_msg.html', form=form))
 		return render_template('sent.html', page='contact')
-	return render_template('contact.html', page='contact', form=form)
+	return render_template('contact.html', page='contact', form=form, title='Contact - Contact the Dev, Queries & Ideas')
 
 
 @app.route('/test')

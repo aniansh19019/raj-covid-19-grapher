@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block meta %}
+    {{ super() }}
+    <meta name="description" content="Welcome to Raj Covid-19 Grapher Tool! Use this tool to generate covid-19 related graphs. A variety of graphs are possible, such as: Total number of cases vs Days, Total Recoveries/Deaths vs Days, New Cases vs Total Number of case and so on. Generate graphs and analyze the data yourself without depending on news sources!">
+{% endblock %}
 
 {% import 'bootstrap/wtf.html' as wtf %}
 

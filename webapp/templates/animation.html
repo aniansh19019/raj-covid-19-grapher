@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block meta %}
+    {{ super() }}
+    <meta name="description" content="Covid - 19 Animation Tool. Use this tool to generate covid-19 related animated graphs. A variety of animated graphs are possible, such as: Total number of cases vs Days, Total Recoveries/Deaths vs Days, New Cases vs Total Number of case and so on. Generate graphs and analyze the data yourself without depending on news sources!">
+{% endblock %}
+
     {% block app_content %}
         <br>
         <center>
