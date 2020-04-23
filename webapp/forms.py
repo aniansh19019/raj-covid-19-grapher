@@ -101,10 +101,11 @@ class GraphForm(FlaskForm):
 							validators=[DataRequired(), 
 							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 							end_validate])
-	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
+	
 	y_field = SelectField('Y Axis Data', choices=y_data_choices)
-	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')
+	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
 	y_scale = SelectField('Y Axis Scale', choices=scale_choices, default='linear')
+	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')
 	line_width = FloatField('Line Width(pt)(0 to 5)', default=1, validators=[NumberRange(min=0, max=5, message="Please enter a value in the specified range.")])
 	averaging = IntegerField('Averaging Level(0-10)', default=0, validators=[NumberRange(min=0, max=10, message="Please enter a value in the specified range.")])
 	# fps=IntegerField('FPS(Frames per Second)(1-30)', default=12, validators=[NumberRange(min=1, max=30, message="Please enter a value in the specified range.")])
@@ -128,10 +129,12 @@ class AnimForm(FlaskForm):
 							validators=[DataRequired(), 
 							DateRange(max=last_date, min=first_date, message='Date must be between "'+first_date.strftime('%d-%m-%y')+'" and "'+last_date.strftime('%d-%m-%y')+'"'),
 							end_validate])
-	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
+	
 	y_field = SelectField('Y Axis Data', choices=y_data_choices)
-	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')
+	x_field	= SelectField('X Axis Data', choices=x_data_choices, default='days')
+	
 	y_scale = SelectField('Y Axis Scale', choices=scale_choices, default='linear')
+	x_scale = SelectField('X Axis Scale', choices=scale_choices, default='linear')
 	line_width = FloatField('Line Width(pt)(0 to 5)', default=1, validators=[NumberRange(min=0, max=5, message="Please enter a value in the specified range.")])
 	
 	averaging = IntegerField('Averaging Level(0-10)', default=0, validators=[NumberRange(min=0, max=10, message="Please enter a value in the specified range.")])
