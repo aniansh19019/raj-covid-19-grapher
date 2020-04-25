@@ -39,6 +39,9 @@ animation speed
 
 redis file removal
 
+Add info tooltips
+
+
 //css loading
 
 
