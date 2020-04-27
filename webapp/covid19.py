@@ -302,6 +302,17 @@ def global_recovered_rate(startDate, endDate=None):
 			retlist.append(100-x)
 		return retlist
 
+def global_closed_recovered_rate(startDate, endDate=None):
+	if endDate==None:
+		rate=global_closed_death_rate(startDate)
+		return 100-rate
+	else:
+		rate=global_closed_death_rate(startDate, endDate)
+		retlist=[]
+		for x in rate:
+			retlist.append(100-x)
+		return retlist
+
 
 
 

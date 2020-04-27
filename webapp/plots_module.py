@@ -86,6 +86,16 @@ class Plot:
         Plot.x_label=Plot.data_dict[Plot.x_field]
         Plot.y_label=Plot.data_dict[Plot.y_field]
         yfunc=None
+        global_yfunc=None
+        if "World" in Plot.countries:
+            if Plot.y_field.find('.')!=-1:
+                dot=Plot.y_field.index('.')
+                obj_str=Plot.y_field[:dot]
+                func_str="global_"+Plot.y_field[dot+1:]
+                global_yfunc=getattr(getattr(cov,obj_str),func_str)
+            else:
+                global_yfunc=getattr(cov,"global_"+Plot.y_field)
+        
         if Plot.y_field.find('.')!=-1:
             dot=Plot.y_field.index('.')
             obj_str=Plot.y_field[:dot]
@@ -96,7 +106,10 @@ class Plot:
 
 
         for i in range(Plot.N):
-            Plot.Y[i]=smooth(yfunc(Plot.countries[i], Plot.start, Plot.end),Plot.smoothness)
+            if Plot.countries[i]=="World":
+                Plot.Y[i]=smooth(global_yfunc(Plot.start, Plot.end),Plot.smoothness)
+            else:
+                Plot.Y[i]=smooth(yfunc(Plot.countries[i], Plot.start, Plot.end),Plot.smoothness)
 
 
 
@@ -108,6 +121,15 @@ class Plot:
         else:
 
             xfunc=None
+            global_xfunc=None
+            if "World" in Plot.countries:
+                if Plot.x_field.find('.')!=-1:
+                    dot=Plot.x_field.index('.')
+                    obj_str=Plot.x_field[:dot]
+                    func_str="global_"+Plot.x_field[dot+1:]
+                    global_xfunc=getattr(getattr(cov,obj_str),func_str)
+                else:
+                    global_xfunc=getattr(cov,"global_"+Plot.x_field)
             if Plot.x_field.find('.')!=-1:
                 dot=Plot.x_field.index('.')
                 obj_str=Plot.x_field[:dot]
@@ -117,7 +139,10 @@ class Plot:
                 xfunc=getattr(cov,Plot.x_field)
 
             for i in range(Plot.N):
-                Plot.X[i]=smooth(xfunc(Plot.countries[i], Plot.start, Plot.end),Plot.smoothness)
+                if Plot.countries[i]=="World":
+                    Plot.X[i]=smooth(global_xfunc(Plot.start, Plot.end),Plot.smoothness)
+                else:
+                    Plot.X[i]=smooth(xfunc(Plot.countries[i], Plot.start, Plot.end),Plot.smoothness)
 
 
 
@@ -141,7 +166,8 @@ class Plot:
 
 
 
-
+        if(len(Plot.countries)>16):
+            Plot.leg=False
 
 
 

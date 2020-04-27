@@ -48,7 +48,7 @@ for key in alphabetical:
 
 
 
-country_choices=[]
+country_choices=[("World", "World")]
 for key in keys:
 	if key in custom_country_labels.keys():
 		sub=(key,custom_country_labels[key])
