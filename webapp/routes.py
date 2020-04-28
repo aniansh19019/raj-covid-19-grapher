@@ -71,7 +71,7 @@ def poll_func(home=False):
 		country=""
 		user_agent_str=""
 		try:
-			ip_list=list(http_headers['X-Forwarded-For'])
+			ip_list=http_headers['X-Forwarded-For'].split(", ")
 			# ip=http_headers['Cf-Connecting-Ip']
 			for x in ip_list:
 				if len(x)>16:
