@@ -1,1 +1,1 @@
-web: gunicorn grapher:app
+web: flask db upgrade; gunicorn grapher:app
