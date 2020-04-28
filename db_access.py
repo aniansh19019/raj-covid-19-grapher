@@ -9,3 +9,6 @@ def view_all():
 
 if __name__ == '__main__':
 	view_all()
+	n=len(sys.argv)
+	args=sys.argv
+	print(args)
