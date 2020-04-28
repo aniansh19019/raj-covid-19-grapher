@@ -1,5 +1,6 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
 	SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
@@ -14,8 +15,11 @@ class Config(object):
 
 	#redis
 	REDIS_URL = os.environ.get("REDIS_URL") 
+	#sqlAlchemy
 
-
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'app.db')
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	#server vars
 	
 	# REDIS_URL = "redis://h:pe4ba8bd95cc576bb4853d7660e60cc818c1f45b6023b59061250a42a5ebed4fb@ec2-52-213-23-142.eu-west-1.compute.amazonaws.com:16569"

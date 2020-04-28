@@ -6,6 +6,11 @@ from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 import redis
 import os
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+
+
 
 app = Flask(__name__)
 
@@ -16,7 +21,8 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config.from_object(Config)
 
 
-
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 mail = Mail(app)
@@ -28,7 +34,7 @@ if app.config['REDIS_URL']:
 
 
 
-from webapp import routes
+from webapp import routes, models
 
 
 

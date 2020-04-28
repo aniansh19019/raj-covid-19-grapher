@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from webapp import app
+from webapp import app, db
 from webapp.forms import GraphForm, AnimForm, MessageForm
 # import webapp.forms as forms_module
 from webapp.covid19 import *
@@ -10,14 +10,16 @@ from webapp.email import send_email
 # import urllib.request
 from webapp.redis_thread import set_var, incr_var, get_var
 # from urllib2 import Request, urlopen
+from webapp.models import Headers
 
+from user_agents import parse
 
 countries=list(Recovered.dict.keys());
 counter='counter'
 res_url=''
 http_headers=None
 render_id='desktop'
-def poll_func():
+def poll_func(home=False):
 	global http_headers
 	global render_id
 	user_device='default'
@@ -27,7 +29,7 @@ def poll_func():
 		http_headers=dict(request.headers)
 		try:
 			user_agent=str(http_headers['User-Agent'])
-			print(user_agent)
+			# print(user_agent)
 			if 'iPad' in user_agent:
 				user_device='ipad'
 			elif 'iPhone' in user_agent:
@@ -42,7 +44,7 @@ def poll_func():
 				user_device='linux'
 			else:
 				user_device='default'
-			print(user_device)
+			# print(user_dfevice)
 		except:
 			print("Couldn't obtain user agent!")
 			user_device='default'
@@ -61,6 +63,29 @@ def poll_func():
 
 
 
+
+
+
+	if http_headers!=None and home==True:
+		ip=""
+		country=""
+		try:
+			ip=http_headers['Cf-Connecting-Ip']
+			country=http_headers['Cf-Ipcountry']
+		except:
+			ip="1.1.1.1"
+			country="IN"
+
+		user_agent_str=http_headers['User-Agent']
+		user_agent_obj=parse(user_agent_str)
+		h=Headers(ip=ip, country=country, user_agent=str(user_agent_obj))
+		db.session.add(h)
+		db.session.commit()
+		print("pushed")
+	else:
+		pass
+
+
 	if os.path.exists(res_url):
 		os.remove(res_url)
 
@@ -72,7 +97,7 @@ def index():
 	global res_url
 
 
-	poll_func()
+	poll_func(True)
 
 
 	
