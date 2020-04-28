@@ -78,13 +78,11 @@ def poll_func(home=False):
 
 		user_agent_str=http_headers['User-Agent']
 		user_agent_obj=parse(user_agent_str)
-		try:
-			h=Headers(ip=ip, country=country, user_agent=user_agent_str, fancy_user_agent=str(user_agent_obj))
-			db.session.add(h)
-			db.session.commit()
-			print("pushed")
-		except:
-			print("Database Error! Could Not Push!")
+		h=Headers(ip=ip, country=country, user_agent=user_agent_str, fancy_user_agent=str(user_agent_obj))
+		db.session.add(h)
+		db.session.commit()
+		print("pushed")
+		# print("Database Error! Could Not Push!")
 	else:
 		pass
 
