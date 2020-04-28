@@ -2,6 +2,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 class Config(object):
 	SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
 
@@ -13,13 +14,15 @@ class Config(object):
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	ADMINS = ['aniansh@yahoo.com']
 
+
 	#redis
 	REDIS_URL = os.environ.get("REDIS_URL") 
 	#sqlAlchemy
 
-	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+	# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        # 'sqlite:///' + os.path.join(basedir, 'app.db')
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
+	SQLALCHEMY_DATABASE_URI="postgres://spfqwjelmjhvrk:39918804fa6bb6546ea08339b2c26936fed481e921a3cc70b189db8f2405fb00@ec2-46-137-84-173.eu-west-1.compute.amazonaws.com:5432/d6dsbce81tcuqm"
 	#server vars
 	
 	# REDIS_URL = "redis://h:pe4ba8bd95cc576bb4853d7660e60cc818c1f45b6023b59061250a42a5ebed4fb@ec2-52-213-23-142.eu-west-1.compute.amazonaws.com:16569"

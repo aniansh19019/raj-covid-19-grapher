@@ -9,4 +9,4 @@ class Headers(db.Model):
 	timestamp = db.Column(db.DateTime, index=True, primary_key=True, default=datetime.utcnow)
 
 	def __repr__(self):
-		return '<IP: {}>'.format(self.ip)   
+		return self.timestamp.strftime("%m/%d/%Y ; %H:%M:%S")+" || IP: "+self.ip+" | Country: "+self.country+" | User Agent: "+self.fancy_user_agent 
