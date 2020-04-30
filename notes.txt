@@ -43,4 +43,7 @@ Add info tooltips
 //css loading
 
 
+
+//make into an android app
+
 {'Host': 'www.rajcovid19.info', 'Connection': 'close', 'Accept-Encoding': 'gzip', 'Cf-Ipcountry': 'IN', 'X-Forwarded-For': '106.215.203.75, 162.158.107.75', 'Cf-Ray': '5879eafce812bcde-SEA', 'X-Forwarded-Proto': 'http', 'Cf-Visitor': '{"scheme":"http"}', 'Dnt': '1', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8', 'Cookie': '_ga=GA1.2.2063666461.1587430604; _gid=GA1.2.898465851.1587430604; session=eyJjc3JmX3Rva2VuIjoiZTlmYTllNDFiN2QyZjJiMTBiOGVlMTBkYjQ5MDg2MDEwNDRlODM4NCJ9.Xp9TFQ.Mt6UjSWCKjcNPMzYZSbHkE9wuRw', 'Cf-Request-Id': '02401132110000bcde9d0af200000001', 'Cf-Connecting-Ip': '106.215.203.75', 'Cdn-Loop': 'cloudflare', 'X-Request-Id': '40b231b5-a380-4a3d-a685-7dc21878b1d4', 'X-Forwarded-Port': '80', 'Via': '1.1 vegur', 'Connect-Time': '0', 'X-Request-Start': '1587501603585', 'Total-Route-Time': '0'}
