@@ -35,6 +35,32 @@
                 tail.select("select", {search:true/* Your Options */ });
             });
     </script>
+    <center>
+    <button id="test-button" onclick="myFunction()" class="btn btn-primary">Testing Spinner</button>
+    <div class="spinner-border" role="status">
+  		<span class="sr-only">Loading...</span>
+	</div>
+	<div class="loader" id="loader-2">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="fa-2x test-spinner" id="spinner_ctrl">
+  			<i class="fas fa-cog fa-spin"></i>
+		</div>
+		<div class="alert alert-success" role="alert">...</div>
+
+	</center>
+	<script type="text/javascript">
+		function myFunction() {
+  var x = document.getElementById("spinner_ctrl");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+	</script>
 
 	
 {% endblock %}

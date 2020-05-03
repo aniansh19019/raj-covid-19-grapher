@@ -20,6 +20,13 @@
                 </div>
                 <div class="col-md-8">
                     {{ wtf.quick_form(form) }}
+                    <div id="spinner_ctrl" style="display: none;">
+                        
+                        <span class="fa-2x">
+                            <i class="fas fa-cog fa-spin"></i>     
+                        </span>
+                        <span class="gen-text">Generating Graph...</span>
+                    </div>
                 </div>
                 <div class="col-md-2">
 

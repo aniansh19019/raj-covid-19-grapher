@@ -110,7 +110,7 @@ class GraphForm(FlaskForm):
 	averaging = IntegerField('Averaging Level(0-10)', default=0, validators=[NumberRange(min=0, max=10, message="Please enter a value in the specified range.")])
 	# fps=IntegerField('FPS(Frames per Second)(1-30)', default=12, validators=[NumberRange(min=1, max=30, message="Please enter a value in the specified range.")])
 	legends = BooleanField('Legends', default=True)
-	generate = SubmitField('Generate Graph')
+	generate = SubmitField('Generate Graph', render_kw={"onclick": "myFunction()"})
 	# generate_anim= SubmitField('Generate Animation')
 
 
@@ -141,7 +141,7 @@ class AnimForm(FlaskForm):
 	fps=IntegerField('FPS(Frames per Second)(1-30)', default=12, validators=[NumberRange(min=1, max=30, message="Please enter a value in the specified range.")])
 	# generate = SubmitField('Generate Graph')
 	legends = BooleanField('Legends', default=True)
-	generate_anim= SubmitField('Generate Animation')
+	generate_anim= SubmitField('Generate Animation', render_kw={"onclick": "myFunction()"})
 
 class MessageForm(FlaskForm):
 	name=StringField('Name', render_kw={"placeholder": "John Smith"})
