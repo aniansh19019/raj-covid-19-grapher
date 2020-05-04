@@ -15,12 +15,12 @@ meta tags
 //favicon
 how to
 landing page
-description
+descriptionx
 styling
 information page
 templates
 interpretation
-logging usin google sheets
+//logging usin google sheets//using postgress
 //google analytics
 //default countries
 //world data support
