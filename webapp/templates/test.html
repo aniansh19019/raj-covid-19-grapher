@@ -4,63 +4,35 @@
 {% block head %}
 	{{ super() }}
 
-	<script type="text/javascript">
-	$('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'<script>});
-	</script>
 {% endblock %}
 {% block app_content %}
 
+<h1><center>Testing Area</center></h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
 
-	<div class="input-group date" data-provide="datepicker">
-    <input type="text" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
 </div>
-	<center><h1>Testing Area</h1></center>
-	<p>
-		<select>
-			<option>a</option>
-			<option>b</option>
-			<option>c</option>
-			<option>d</option>
-			<option>e</option>
-			<option>f</option>
-		</select>
-	</p>
-	<script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function(){
-                tail.select("select", {search:true/* Your Options */ });
-            });
-    </script>
-    <center>
-    <button id="test-button" onclick="myFunction()" class="btn btn-primary">Testing Spinner</button>
-    <div class="spinner-border" role="status">
-  		<span class="sr-only">Loading...</span>
-	</div>
-	<div class="loader" id="loader-2">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="fa-2x test-spinner" id="spinner_ctrl">
-  			<i class="fas fa-cog fa-spin"></i>
-		</div>
-		<div class="alert alert-success" role="alert">...</div>
-
-	</center>
-	<script type="text/javascript">
-		function myFunction() {
-  var x = document.getElementById("spinner_ctrl");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-	</script>
+	
 
 	
 {% endblock %}
