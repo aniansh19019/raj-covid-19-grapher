@@ -7,7 +7,7 @@
 //Admin page
 //search bar for countries
 //counry validation
-seo
+seo/
 meta tags
 //analytics
 //tutorial creds
