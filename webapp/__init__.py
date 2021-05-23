@@ -34,7 +34,7 @@ if app.config['REDIS_URL']:
 
 
 
-from webapp import routes, models
+from webapp import routes
 
 
 

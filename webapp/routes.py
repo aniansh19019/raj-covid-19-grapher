@@ -1,99 +1,19 @@
 from flask import render_template, flash, redirect, url_for, request
 from webapp import app, db
 from webapp.forms import GraphForm, AnimForm, MessageForm
-# import webapp.forms as forms_module
 from webapp.covid19 import *
 import datetime as dt
 from webapp.plots_module import Plot as pt
 import os
 from webapp.email import send_email
-# import urllib.request
 from webapp.redis_thread import set_var, incr_var, get_var
-# from urllib2 import Request, urlopen
-from webapp.models import Headers
 
-from user_agents import parse
 
 countries=list(Recovered.dict.keys());
 counter='counter'
 res_url=''
 http_headers=None
 render_id='desktop'
-def poll_func(home=False):
-	global http_headers
-	global render_id
-	user_device='default'
-
-
-	try:
-		http_headers=dict(request.headers)
-		try:
-			user_agent=str(http_headers['User-Agent'])
-			# print(user_agent)
-			if 'iPad' in user_agent:
-				user_device='ipad'
-			elif 'iPhone' in user_agent:
-				user_device='iphone'
-			elif 'Android' in user_agent:
-				user_device='android'
-			elif 'Macintosh' in user_agent:
-				user_device='mac'
-			elif 'Windows' in user_agent:
-				user_device='windows'
-			elif 'Ubuntu' in user_agent:
-				user_device='linux'
-			else:
-				user_device='default'
-			# print(user_dfevice)
-		except:
-			print("Couldn't obtain user agent!")
-			user_device='default'
-	except:
-		print("Couldn't obtain headers!")
-
-	
-		
-		# print(user_device)
-	if user_device=='iphone':
-		render_id='iphone'
-	elif user_device=='android':
-		render_id='android'
-	else:
-		render_id='desktop'
-
-
-
-
-
-
-	if http_headers!=None and home==True:
-		ip=""
-		country=""
-		user_agent_str=""
-		try:
-			ip_list=http_headers['X-Forwarded-For'].split(", ")
-			# ip=http_headers['Cf-Connecting-Ip']
-			for x in ip_list:
-				if len(x)>16:
-					continue
-				else:
-					ip=x
-					break
-			country=http_headers['Cf-Ipcountry']
-			user_agent_str=http_headers['User-Agent']
-			user_agent_obj=parse(user_agent_str)
-			h=Headers(ip=ip, country=country, user_agent=user_agent_str, fancy_user_agent=str(user_agent_obj))
-			db.session.add(h)
-			db.session.commit()
-			print("pushed")
-		except:
-			print("Database Error/User Agent Error! Could Not Push!")
-	else:
-		pass
-
-
-	if os.path.exists(res_url):
-		os.remove(res_url)
 
 
 
@@ -101,14 +21,6 @@ def poll_func(home=False):
 @app.route('/index', methods=['GET', 'Post'])
 def index():
 	global res_url
-
-
-	poll_func(True)
-
-
-	
-
-
 	graph_form = GraphForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -138,7 +50,6 @@ def index():
 @app.route('/animation', methods=['GET', 'POST'])
 def animation():
 	global res_url
-	poll_func()
 	graph_form = AnimForm()
 	if graph_form.validate_on_submit():
 		# print(graph_form.countries.data)
@@ -167,13 +78,11 @@ def animation():
 
 @app.route('/about')
 def about():
-	poll_func()
 	return render_template('about.html', title='About - About the App, Credits & Sources', page='about')
 
 
 @app.route('/contact', methods=['GET', 'Post'])
 def contact():
-	poll_func()
 	form=MessageForm()
 	if form.validate_on_submit():
 		print(form.name.data)
@@ -200,7 +109,6 @@ def contact():
 
 @app.route('/test')
 def test():
-	poll_func()
 	print(dict(request.headers))
 	# http_req=request.headers['X-Wap-Profile']
 	# http_req=request.headers['X-Wap-Profile']
@@ -214,7 +122,6 @@ def test():
 
 @app.route('/hits')
 def hits():
-	poll_func()
 	count=0	
 	try:
 		count=str(get_var(counter))
@@ -228,7 +135,6 @@ def hits():
 
 @app.route('/reset_hits')
 def reset_hits():
-	poll_func()
 	set_var(counter,0)
 	count='Counter Reset!'
 	return render_template('hits.html',page='hits', count=count)
@@ -237,11 +143,9 @@ def reset_hits():
 
 @app.errorhandler(404)
 def not_found_error(error):
-	poll_func()
 	# send_email("404 detected on site", "LOL", "<h1></h1>")
 	return render_template('404.html'), 404
 
 @app.errorhandler(500)
 def internal_error(error):
-	poll_func()
 	return render_template('500.html'), 500

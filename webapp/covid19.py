@@ -39,10 +39,10 @@ class Cases:
 
 					self.dict[key]=sub_dict
 
-					sub_loc_list=[]
-					for i in range(2,4):
-						sub_loc_list.append(float(row[i]))
-					self.loc[key]=sub_loc_list
+					# sub_loc_list=[]
+					# for i in range(2,4):
+					# 	sub_loc_list.append(float(row[i]))
+					# self.loc[key]=sub_loc_list
 							
 
 
@@ -62,7 +62,7 @@ class Cases:
 		i2=date.index("/",i1+1)
 		month=int(date[:i1])
 		day=int(date[i1+1:i2])
-		year=int("2020")
+		year=int(date[i2+1:i2+5])
 		date_obj=dt.date(year,month,day)
 		return date_obj
 
