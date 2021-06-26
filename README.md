@@ -6,7 +6,11 @@ The web app allows anyone to generate almost all possible graphs concerning the 
 
 ## Overview
 
-The webapp first parses the data from the John Hopkins University Covid - 19 Data repository. The user enters a number of specifications for the graphs using the web interface. The user can select which data points to plot, what kinds of axes to use, which countries to plot the data for and many other specifications. After this, the previously parsed data is used to generate the graph according to the user's preferences and the graph is then displayed to the user on the website. The user has an option of saving the image/video file or to start bulding a new graph.
+The webapp first parses the data from the **John Hopkins University** Covid - 19 Data repository. The user enters a number of specifications for the graphs using the web interface. The user can select which data points to plot, what kinds of axes to use, which countries to plot the data for and many other specifications. After this, the previously parsed data is used to generate the graph according to the user's preferences and the graph is then displayed to the user on the website. The user has an option of saving the image/video file or to start bulding a new graph.
+
+<p float = "left" align = "center">
+	<img src = "/screenshots/2.png" width = "65%" height="65%">
+</p>
 
 The entire UI has been kept very minimal and functional for ease of use. A combination of python flask, Bootstrap and jinja has been used to create the web interface. There is also a contact page which sends user queries directly to the developer's email.
 
@@ -22,6 +26,10 @@ pip install -r requirements.txt
 flask run
 ```
 The webapp will be hosted on localhost this way and can be accessed using the address displayed in the terminal.
+
+## Usage
+
+Once the webapp is running, visit the address printed on the terminal to access the web interface. From there the user can set all the relevant parameters as per their requirements and then click on "Generate Graph" to display the final result. 
 
 ## Credits and Sources
 
