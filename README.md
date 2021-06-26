@@ -2,7 +2,9 @@
 
 This is a python flask based web application for generating and exporting graphs and animations for the different data elements associated with the Covid-19 pandemic. 
 
-The web app allows anyone to generate almost all possible graphs concerning the current Covid-19 Pandemic. I have tried to make the whole process as simple and self explanatory as possible. The user just selects the relevant options and then proceeds to view/download the generated graph/animation. 
+The web app allows anyone to generate almost all possible graphs concerning the current Covid-19 Pandemic. I have tried to make the whole process as simple and self explanatory as possible. The user just selects the relevant options and then proceeds to view/download the generated graph/animation.
+
+The webapp is currently also hosted on heroku <a href = "http://rajcovid19.xyz"> here </a>.
 
 ## Overview
 
